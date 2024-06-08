@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\wspbContoller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,19 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+Route::get('/wspservice', [wspbContoller::class, 'webhook']);
+
+Route::post('/wspservice', [wspbContoller::class, 'recibe']);
+
+Route::get('/sendmessage', [wspbContoller::class, 'sendmessage']);
+
+Route::get('/compras', function () {
+   
+    echo ' comrpaste este producto ';
+
+    }
+ ) ;
+
