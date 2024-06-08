@@ -6,6 +6,8 @@ use App\Models\Products;
 use App\Http\Requests\StoreProductsRequest;
 use App\Http\Requests\UpdateProductsRequest;
 
+use Exception;
+
 class ProductsController extends Controller
 {
     /**
@@ -15,7 +17,29 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        //
+        
+        try {
+            
+
+            $userschatwsp = Products::all();
+
+            return $userschatwsp->toJson();
+
+
+        } catch (Exception $th) {
+         
+            return response()->json([
+
+                'success'=> false,
+                'message' => $th->getMessage()
+
+
+            ]);
+
+        }
+
+
+
     }
 
     /**

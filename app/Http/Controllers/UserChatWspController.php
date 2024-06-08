@@ -6,6 +6,9 @@ use App\Models\UserChatWsp;
 use App\Http\Requests\StoreUserChatWspRequest;
 use App\Http\Requests\UpdateUserChatWspRequest;
 
+use Exception;
+
+
 class UserChatWspController extends Controller
 {
     /**
@@ -15,7 +18,28 @@ class UserChatWspController extends Controller
      */
     public function index()
     {
-        //
+        
+        try {
+            
+
+            $userschatwsp = UserChatWsp::all();
+
+            return $userschatwsp->toJson();
+
+
+        } catch (Exception $th) {
+         
+            return response()->json([
+
+                'success'=> false,
+                'message' => $th->getMessage()
+
+
+            ]);
+
+        }
+
+
     }
 
     /**

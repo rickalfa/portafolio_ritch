@@ -7,5 +7,20 @@ use Illuminate\Database\Eloquent\Model;
 
 class UserChatWsp extends Model
 {
+
+    use HasFactory;
+
+    protected $fillable = [
+
+        'dateschat',
+        'state',
+        'user_id'
+
+
+
+    ];
+
+
+
     use HasFactory;
 }

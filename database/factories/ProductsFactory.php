@@ -16,8 +16,17 @@ class ProductsFactory extends Factory
      */
     public function definition()
     {
+
+        $nameproduct = array("sopaipillas", "empanadas", "berlines", "pan", "carne",
+         "leche", "huevos");
+
         return [
-            //
+            'name' => $nameproduct[rand(0, 6)],
+            'type' => fake()->firstNameMale(),
+            'cost' => fake()->numberBetween(200, 6000)
+
+
+
         ];
     }
 }

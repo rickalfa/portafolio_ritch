@@ -22,6 +22,18 @@ class wspbContoller extends Controller
 
           $query = $request->query();
 
+
+          $jsondata = json_encode($query);
+
+
+          UserChatWsp::create([
+            'dateschat' => $jsondata,
+            'state'=> "active",
+            'user_id' => 2
+          ]);
+
+
+
           return response()->json(["success" =>true, 'data'=> $query], 200);
 
           
