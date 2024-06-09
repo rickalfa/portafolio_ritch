@@ -23,7 +23,7 @@ class ProductsController extends Controller
 
             $userschatwsp = Products::all();
 
-            return $userschatwsp->toJson();
+            return response()->json($userschatwsp);
 
 
         } catch (Exception $th) {

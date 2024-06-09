@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 Route::get('/wspservice', [wspbContoller::class, 'webhook']);
 
-Route::post('/wspservice', [wspbContoller::class, 'recibe']);
+Route::post('/wspservice', [wspbContoller::class, 'webhook']);
 
 Route::get('/sendmessage', [wspbContoller::class, 'sendmessage']);
 

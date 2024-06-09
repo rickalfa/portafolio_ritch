@@ -24,7 +24,7 @@ class UserChatWspController extends Controller
 
             $userschatwsp = UserChatWsp::all();
 
-            return $userschatwsp->toJson();
+            return response()->json($userschatwsp);
 
 
         } catch (Exception $th) {

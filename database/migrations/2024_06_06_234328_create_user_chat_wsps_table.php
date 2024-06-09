@@ -18,7 +18,7 @@ return new class extends Migration
 
             $table->text('dateschat');
             $table->string('state');
-            $table->unsignedBigInteger("user_id")->unique();
+            $table->unsignedBigInteger("user_id");
 
             $table->foreign("user_id")->references("id")->on("users");
 
