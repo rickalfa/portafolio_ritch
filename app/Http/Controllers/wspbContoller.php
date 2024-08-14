@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 use App\Models\UserChatWsp;
 use Exception;
@@ -11,14 +12,19 @@ class wspbContoller extends Controller
 {
 
 
+  private $dates_message;
 
+
+  /**recepion de comprovacion de TOKEN de 
+   * WHATSSAP API CLOUD
+   */
     public function webhook(Request $request){
         //TOQUEN QUE QUERRAMOS PONER 
    
 
         try {
           
-          $token = 'HolaNovato';
+          Log::info('WhatsApp Webhook Request:', $request->all());
 
           $query = $request->query();
 
@@ -26,17 +32,24 @@ class wspbContoller extends Controller
           $jsondata = json_encode($query);
 
 
-          UserChatWsp::create([
-            'dateschat' => $jsondata,
-            'state'=> "active",
-            'user_id' => 2
-          ]);
 
+              // Verificación del webhook
+      if ($request->isMethod('get')) {
+        $mode = $request->query('hub_mode');
+        $token = $request->query('hub_verify_token');
+        $challenge = $request->query('hub_challenge');
 
+      if ($mode && $token) {
+            if ($mode === 'subscribe' && $token === env('WHATSAPP_VERIFY_TOKEN')) {
+                // Responde con el reto proporcionado
+                return response($challenge, 200);
+            } else {
+           
+            }
+        }
 
-          return response()->json(["success" =>true, 'data'=> $query], 200);
+      }
 
-          
 
         } catch (Exception $th) {
           
@@ -51,8 +64,29 @@ class wspbContoller extends Controller
       /*
       * RECEPCION DE MENSAJES
       */
-      public function recibe(){
+      public function recibir(Request $request){
         //LEEMOS LOS DATOS ENVIADOS POR WHATSAPP
+
+          
+        Log::info('WhatsApp Webhook dates message Request:', $request->all());
+
+        $data = array();
+        
+
+         $data =  $request->all();
+
+         
+         if (isset($data['entry'][0]['changes'][0]['value']['messages'][0]['from'])) {
+          $messageBody = $data['entry'][0]['changes'][0]['value']['messages'][0]['from'];
+
+          // Convertir el valor a string, aunque debería serlo ya
+          $messageBodyAsString = (string) $messageBody;
+
+          // Registrar el valor en el log
+          Log::info('WhatsApp message user: ' . $messageBodyAsString);
+
+        }
+
 
 
       }
@@ -61,7 +95,27 @@ class wspbContoller extends Controller
 
 
         $mensaje = $request->message;
+        $number_to = $request->numberto;
+
+        $response_sendm = $this->sendMessageWsp($mensaje, $number_to);
               
+
+
+        echo $response_sendm;
+   
+
+      }
+
+      public function GetDateMenssageUser(){
+
+        $date_massage_user = $this->dates_message;
+
+        return $date_massage_user;
+
+      }
+
+
+      public function sendMessageWsp($mensaje, $numberTo){
 
         $curl = curl_init();
 
@@ -76,7 +130,7 @@ class wspbContoller extends Controller
           CURLOPT_CUSTOMREQUEST => 'POST',
           CURLOPT_POSTFIELDS =>'{
           "messaging_product": "whatsapp",
-          "to": "56984693206",
+          "to": "'.$numberTo.'",
               "type": "text",
             "text": {
                 "body": "'.$mensaje.'"
@@ -85,7 +139,7 @@ class wspbContoller extends Controller
         }',
           CURLOPT_HTTPHEADER => array(
             'Content-Type: application/json',
-            'Authorization: Bearer EAAM2vwJ27JoBO3e279gyfa267guamQJxuZBUiThar3nzK3aPJPEutUDPy8dKpfBn9rqFI0CwQ2rFG3ZCIypYg5ONB6fySEZAKoL8tC2ZCXEDZAh4GZBD3nwqWxkyQ9ZA44Acblpck1DazZBZB4HVdvDSrdpWVeUICnMAzJkZCCxST0PLKFtH95vxzbIZAVZBYRQ4cP2cdC9dWZCISPSj6jVSMp7QZD'
+            'Authorization: Bearer '.env('WHATSSAP_API_TOKEN')
           ),
         ));
 
@@ -95,9 +149,6 @@ class wspbContoller extends Controller
         echo $response;
 
 
-
-
       }
-
       
 }

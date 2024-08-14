@@ -22,13 +22,13 @@ Route::get('/', function () {
 
 Route::get('/wspservice', [wspbContoller::class, 'webhook']);
 
-Route::post('/wspservice', [wspbContoller::class, 'webhook']);
+Route::post('/wspservice', [wspbContoller::class, 'recibir']);
 
 Route::get('/sendmessage', [wspbContoller::class, 'sendmessage']);
 
 Route::get('/compras', function () {
    
-    echo ' comrpaste este producto ';
+    echo ' compraste este producto ';
 
     }
  ) ;

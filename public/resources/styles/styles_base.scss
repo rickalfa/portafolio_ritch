@@ -1,4 +1,4 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../../../node_modules/bootstrap/scss/bootstrap.scss";
 
 body{
 
@@ -45,3 +45,155 @@ h2{
 
 
 }
+
+
+
+
+
+///Diseño de CARD PORTAFOLIO 
+/// 
+/// 
+
+$card-bg: #212529;
+$card-text: #ffffff;
+$hover-bg: #ffc107;
+$hover-text: #000000;
+
+.project-card {
+  background-color: $card-bg;
+  color: $card-text;
+  border-radius: 0;
+  box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
+
+  .card-title {
+    color: $card-text;
+  }
+
+  .project-image {
+    width: 128px;
+    height: 128px;
+    object-fit: cover;
+    margin-bottom: 1rem;
+  }
+
+  .project-description {
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+
+    &:hover {
+      background-color: $hover-bg;
+      color: $hover-text;
+    }
+  }
+
+  .accordion {
+    --bs-accordion-bg: #{lighten($card-bg, 10%)};
+    --bs-accordion-color: #{$card-text};
+    --bs-accordion-btn-color: #{$card-text};
+    --bs-accordion-btn-bg: #{lighten($card-bg, 5%)};
+    --bs-accordion-active-bg: #{lighten($card-bg, 15%)};
+    --bs-accordion-active-color: #{$card-text};
+  }
+
+  .card-footer {
+    background-color: lighten($card-bg, 5%);
+    border-top: 1px solid lighten($card-bg, 15%);
+
+    .btn-link {
+      color: $card-text;
+      text-decoration: none;
+
+      &:hover {
+        color: $hover-bg;
+      }
+    }
+  }
+}
+
+
+
+//// SECCION DE SEVICIOS CAJAS DE INFORMACION 
+/// 
+
+
+$card-bg: #f8f9fa;
+$card-border: #dee2e6;
+$icon-color: #007bff;
+
+.service-card {
+  border: 2px solid $card-border;
+  border-radius: 0;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  }
+
+  .card-body {
+    padding: 2rem;
+  }
+
+  i {
+    color: $icon-color;
+    margin-bottom: 1rem;
+  }
+
+  .card-title {
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+
+  .card-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+  }
+}
+
+@media (max-width: 767px) {
+  .service-card {
+    margin-bottom: 1rem;
+  }
+}
+
+///FORMULARIO CONTACTO
+
+.contact-form-card {
+  background-color: var(--dark-bg);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(52, 152, 219, 0.3);
+}
+
+.form-control, .form-select {
+  background-color: var(--input-bg);
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+}
+
+.form-control:focus, .form-select:focus {
+  background-color: var(--input-bg);
+  border-color: var(--hover-color);
+  box-shadow: 0 0 0 0.25rem rgba(52, 152, 219, 0.25);
+  color: var(--text-color);
+}
+
+.form-control::placeholder {
+  color: rgba(25, 0, 255, 0.918);
+}
+
+.btn-prim {
+  background-color: var(--border-color);
+  border-color: var(--border-color);
+}
+
+.btn-prim:hover, .btn-prim:focus {
+  background-color: var(--hover-color);
+  border-color: var(--hover-color);
+}
+
+.form-label {
+  color: var(--text-color);
+}
+
+
