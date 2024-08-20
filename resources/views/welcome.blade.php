@@ -26,7 +26,7 @@
     
 
          <!-- Responsive navbar-->
-         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
           <div class="container">
               <a class="navbar-brand" href="#!">Portafolio</a>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
@@ -104,7 +104,7 @@
 
           <div class="container py-1">
             <div class="row">
-                <div class="col-6">
+                <div class="col-12 col-md-6">
                      <!-- START CARD PORTAFOLIO ---------------------------->
                      <div class="container mt-5">
                         <div class="card project-card">
@@ -178,7 +178,7 @@
               <!------------- END 1nr  CARD----------------------------> 
             </div>
 
-            <div class="col-6">
+            <div class="col-12 col-md-6">
                 <!----------------------------- 2nr   CARD-------------------------------------->
                 <div class="container mt-5">
                     <div class="card project-card">
