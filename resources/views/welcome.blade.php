@@ -37,6 +37,7 @@
                       <li class="nav-item"><a class="nav-link" href="#portafolio">Portafolio</a></li>
                       <li class="nav-item"><a class="nav-link" href="#servicios">Servicios</a></li>
                       <li class="nav-item"><a class="nav-link" href="#contacto">Contacto</a></li>
+                      <li class="nav-item"><a class="nav-link" href="#3dmodels">3D Web</a></li>
                   </ul>
               </div>
           </div>
@@ -333,6 +334,27 @@
 
       <!-------- END CONTENT SERVICIOS ---------------------------------------------------------->
 
+      <!-----------START SECTION 3D MODELS------------------------------------------------------------------------------->
+
+      <section class="py-5 " id="3dmodels">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-12 py-2">
+              <h2> 3D Design</h2>
+              <div id="3Dscreen">  </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!------------------------------------------------------------------------------------------------>
+
+
+
       <!--------- START SECTION CONTACTO------------------------------------------------------------------------->
 
       <section class="py-5" id="contacto">
@@ -416,12 +438,33 @@
     </div>
     
     
+
+
+    <script type="importmap">
+			{
+				"imports": {
+					"three": "https://unpkg.com/three@0.149.0/build/three.module.js",
+					"three/addons/": "./jsm/"
+				}
+			}
+		</script>
+
+    <script type="module" src="{{ asset('resources/js/scripts.js')}}"></script>
+
+
+
         <!-- jQuery 1.8+ -->
     <script src="{{ asset('resources/plugin/components/jQuery/jquery-1.11.3.min.js')}}"></script>
         <!-- Plugin JS file -->
     <script src="{{ asset('resources/plugin/components/moment/moment.min.js')}}"></script>
     <script src="{{ asset('resources/plugin/components/moment/moment-timezone-with-data.min.js')}}"></script> <!-- spanish language (es) -->
     <script src="{{ asset('resources/plugin/whatsapp-chat-support.js')}}"></script>
+
+
+
+
+  
+
     <script>
        $('#button-w').whatsappChatSupport({
             defaultMsg : '',
@@ -431,7 +474,7 @@
      <!-- Bootstrap core JS-->
      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
      <!-- Core theme JS-->
-     <script src="resources/js/scripts.js"></script>
+    
    
 
 
