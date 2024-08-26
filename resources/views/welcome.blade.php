@@ -339,15 +339,101 @@
       <section class="py-5 " id="3dmodels">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-lg-12 py-2">
-              <h2> 3D Design</h2>
-              <div id="3Dscreen">  </div>
+               
+                <div class="col-12">
+                  @php
+                 $items = [
+            [
+                "id" => 1,
+                "title" => "Roble low poly",
+                "description" => "Experiencia con Maya 2020, Blender Optimización:
+                 Enfoque en la optimización de modelos.
+                 y escenas para mejorar el rendimiento en tiempo real y la compatibilidad con dispositivos móviles",
+                "screen_id" => "3Dscreen",
+                "image" => "https://via.placeholder.com/150",
+                "link" => "https://example.com/item1"
+            ],
+            [
+                "id" => 2,
+                "title" => "Casa en el bosque",
+                "description" => "tengo un sólido conocimiento en la integración de experiencias 3D en la web mediante JavaScript ",
+                "screen_id" => "3Dscreen01",
+                "image" => "https://via.placeholder.com/150",
+                "link" => "https://example.com/item2"
+            ]
 
-            </div>
+        ];
+                  @endphp
+  <!----- carousel.blade.php ---------------------------------------------------------------------------------------------->
+                <div class="col-12">
+          
+                  <div  style="position: relative;">
 
-          </div>
+                      <div class="d-flex flex-nowrap" id="scroll-container" style="overflow-x: auto; scroll-behavior: smooth;">
+                          @foreach ($items as $item)
 
-        </div>
+                              <div class="card me-2" >
+                                <div id="{{$item['screen_id']}}"> 
+
+                                </div>
+                                  <div class="card-body"  style="
+                                  top: 62%;
+                                  background-color: rgb(94 169 173 / 84%);
+                                  z-index: 1;
+                                  position: absolute;
+                                  left: 11%;
+                              " >
+
+                               
+                
+                                  
+                                        <h5 class="card-title">{{ $item['title'] }}</h5>
+                                        
+
+                                        <div class="container">
+                                          <div class="row">
+                                            <div class="d-flex flex-column flex-nowrap" style="width: 38rem; ">
+                                                <h5 >Special title treatment</h5>
+                                                <div class="flex-grow-1 ms-3 p-2 text-wrap">
+                                                  {{ $item['description'] }}
+                                                  
+                                                </div>
+                                             
+                                              </div>
+                                    
+                                  
+                                          </div>
+                                        </div>
+                                    
+                                       
+                                       
+                                       
+                                
+                                      
+                                  </div>
+                              </div>
+                          @endforeach
+
+                      </div>
+                  </div>
+
+                  
+                  <div style="z-index: 1; top:-230px; position: relative;" class="d-flex justify-content-between align-items-center mb-2 mx-3" >
+                    <button class="btn btn-primary" id="scroll-left">
+                      <i class="fa-solid fa-circle-chevron-left" style="color: black; font-size: 2rem;"></i> 
+                    </button>
+                    <button class="btn btn-primary" id="scroll-right">
+                       <i class="fa-solid fa-circle-chevron-right" style="color: black; font-size: 2rem;"></i>
+                    </button>
+                </div>
+
+              </div>
+
+                </div><!-------  END Col -12 - CAROUSEL--------------------------------------------------------------------------->
+
+          </div><!------- END ROW ----------------------------------------------------------------------->
+
+        </div> <!--------- END CONTAINER-FLUID---------------------------------------->
 
       </section>
 
@@ -451,6 +537,8 @@
 
     <script type="module" src="{{ asset('resources/js/scripts.js')}}"></script>
 
+    <script type="module" src="{{ asset('resources/js/multiscreen.js')}}"></script>
+
 
 
         <!-- jQuery 1.8+ -->
@@ -466,6 +554,71 @@
   
 
     <script>
+    const scrollContainer = document.getElementById('scroll-container');
+    const btnScrollLeft = document.getElementById('scroll-left');
+    const btnScrollRight = document.getElementById('scroll-right');
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+
+
+    document.getElementById('scroll-left').addEventListener('click', function() {
+        document.getElementById('scroll-container').scrollBy({
+            left: -300,
+            behavior: 'smooth'
+        });
+    });
+
+    document.getElementById('scroll-right').addEventListener('click', function() {
+        document.getElementById('scroll-container').scrollBy({
+            left: 300,
+            behavior: 'smooth'
+        });
+    });
+
+
+    // Event listeners para el arrastre con el mouse
+   // scrollContainer.addEventListener('mousedown', (e) => {
+   //     isDown = true;
+   //     scrollContainer.classList.add('active');
+   //     startX = e.pageX - scrollContainer.offsetLeft;
+   //     scrollLeft = scrollContainer.scrollLeft;
+   // });
+
+   // scrollContainer.addEventListener('mouseleave', () => {
+   //     isDown = false;
+   //     scrollContainer.classList.remove('active');
+   // });
+
+   // scrollContainer.addEventListener('mouseup', () => {
+   //     isDown = false;
+   //     scrollContainer.classList.remove('active');
+   // });
+
+   // scrollContainer.addEventListener('mousemove', (e) => {
+   //     if (!isDown) return;
+   //     e.preventDefault();
+   //     const x = e.pageX - scrollContainer.offsetLeft;
+   //     const walk = (x - startX) * 2; // Multiplicar por 2 para mayor velocidad
+   //     scrollContainer.scrollLeft = scrollLeft - walk;
+   // });
+</script>
+
+<style>
+    #scroll-container {
+        cursor: grab;
+    }
+
+    #scroll-container.active {
+        cursor: grabbing;
+    }
+</style>
+
+
+
+
        $('#button-w').whatsappChatSupport({
             defaultMsg : '',
         });

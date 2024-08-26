@@ -17,6 +17,7 @@ import { OrbitControls } from './jsthree3D/jsm/controls/OrbitControls.js';
 
 
 const screen_size = 200;
+const screen_size_small = 550;
 
 let mixer;
 
@@ -35,8 +36,13 @@ const renderer = new THREE.WebGLRenderer();
 renderer.useLegacyLights = true;
 //renderer.shadowMap.enabled = true;
 
+//Obtenemos el 90% del ancho de la ventana 
+let scren_card_size_width = 0.96 * window.innerWidth;
 
-renderer.setSize( window.innerWidth -screen_size, window.innerHeight - screen_size );
+//obtenemos el 90% del Alto de la ventana
+let screen_hight_90 = 0.98 * window.innerHeight;
+
+renderer.setSize(scren_card_size_width, screen_hight_90 );
 
  /// metodo que se repetira como animacion
 const canvas = document.getElementById("3Dscreen");
@@ -52,15 +58,16 @@ canvas.appendChild( renderer.domElement );
     scene.add( cube );
 
 
-
- window.addEventListener( 'resize', onWindowResize );
+///  REDIMENSION DE LA SCREEN DONDE SE VE EL DISEÑO 3D
+/// window.addEventListener( 'resize', onWindowResize );
 
 
 
 init();
 
 
-function init(){
+function init()
+{
 
 
 
@@ -105,7 +112,7 @@ function init(){
 
          const loader = new GLTFLoader();
 			loader.setDRACOLoader( dracoLoader );
-			loader.load( 'resources/3dmodelos/glb/arbol_roble.glb', function ( gltf ) {
+			loader.load( 'resources/3dmodelos/glb/arbol_roble_anim.glb', function ( gltf ) {
 
 				const model = gltf.scene;
                         //model.rotation.y = 30;
@@ -148,7 +155,7 @@ function onWindowResize() {
       camera.aspect = window.innerWidth / window.innerHeight;
       camera.updateProjectionMatrix();
    
-      renderer.setSize( window.innerWidth , window.innerHeight );
+      renderer.setSize( window.innerWidth - 50, window.innerHeight );
    
    
    }   

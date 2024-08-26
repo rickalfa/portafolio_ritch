@@ -12113,4 +12113,36 @@ h2, .h2 {
 
 .form-label {
   color: var(--text-color);
+}
+
+#info {
+  background-color: rgba(34, 121, 113, 0.84);
+  position: relative;
+  top: 100px;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  z-index: 1; /* TODO Solve this in HTML */
+}
+
+#scroll-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+}
+#scroll-container .card {
+  flex: 0 0 auto;
+  width: 97%;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease;
+}
+#scroll-container .card:hover {
+  transform: scale(1.05);
 }/*# sourceMappingURL=styles_base.css.map */
