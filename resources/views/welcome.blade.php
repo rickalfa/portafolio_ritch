@@ -72,7 +72,7 @@
               <div class="row justify-content-center">
                   <div class="col-lg-6">
                       <h2>Sobre Mi</h2>
-                      <p class="lead">Soy un analista programador con experiencia en el desarrollo de aplicaciones web utilizando PHP y Laravel, con diseños en Bootstrap y SASS. 
+                      <p class="lead">Estudiante de último año de Analista Programador en Instituto Profesional Santo Tomás. 
                     </p>
                       <p class="mb-0">He trabajado en proyectos personales donde he sido responsable de todo el ciclo de vida de las aplicaciones,
                          desde el modelamiento de datos hasta el despliegue en servidores Ubuntu mediante SSH. Utilizo herramientas como MySQL Workbench y Oracle SQL Developer Database para gestionar bases de datos,
@@ -130,7 +130,7 @@
                                       <div class="accordion-body">
                                         <ul>
                                           <li><strong>Backend:</strong> PHP, Laravel</li>
-                                          <li><strong>Frontend:</strong> Bootstrap, SASS</li>
+                                          <li><strong>Frontend:</strong> Bootstrap 5, SASS</li>
                                           <li><strong>Base de Datos:</strong> MySQL</li>
                                           <li><strong>Despliegue:</strong> Servidor Ubuntu, SSH</li>
                                           <li><strong>APIs:</strong> Creación y consumo de APIs RESTful</li>
@@ -242,7 +242,7 @@
                         <a href="https://github.com/rickalfa/conscientiamstudios-3d-web" class="btn btn-link" target="_blank">
                         <i class="bi bi-github" style="color:black; font-size: 1.5rem;"></i> Ver en GitHub
                         </a>
-                        <a href="https://conscientiamstudios.circleoflinks.cloud/" class="btn btn-link" target="_blank">
+                        <a href="https://conscientiamstudios.tech/" class="btn btn-link" target="_blank">
                         <i class="bi bi-globe" style="color:black; font-size: 1.5rem;"></i> Demo en Vivo
                         </a>
                     </div>
@@ -356,7 +356,7 @@
             [
                 "id" => 2,
                 "title" => "Casa en el bosque",
-                "description" => "tengo un sólido conocimiento en la integración de experiencias 3D en la web mediante JavaScript ",
+                "description" => "tengo un sólido conocimiento en la integración de experiencias 3D en la web mediante JavaScript/typescript ",
                 "screen_id" => "3Dscreen01",
                 "image" => "https://via.placeholder.com/150",
                 "link" => "https://example.com/item2"
@@ -364,9 +364,18 @@
 
         ];
                   @endphp
-  <!----- carousel.blade.php ---------------------------------------------------------------------------------------------->
+  
+  <!----- carousel.blade.php 3D ---------------------------------------------------------------------------------------------->
                 <div class="col-12">
-          
+
+                <div class="d-flex justify-content-center">
+                  <div class="m-2">
+                    <h3> 3D galleria</h3>
+                  </div>
+                  
+                </div>
+                 
+
                   <div  style="position: relative;">
 
                       <div class="d-flex flex-nowrap" id="scroll-container" style="overflow-x: auto; scroll-behavior: smooth;">
@@ -382,18 +391,19 @@
                                   z-index: 1;
                                   position: absolute;
                                   left: 11%;
+                                  min-width:15rem;
                               " >
 
                                
                 
                                   
-                                        <h5 class="card-title">{{ $item['title'] }}</h5>
+                                    <h5 class="card-title">{{ $item['title'] }}</h5>
                                         
 
                                         <div class="container">
                                           <div class="row">
-                                            <div class="d-flex flex-column flex-nowrap" style="width: 38rem; ">
-                                                <h5 >Special title treatment</h5>
+                                            <div class="d-flex flex-column flex-nowrap" >
+                                                
                                                 <div class="flex-grow-1 ms-3 p-2 text-wrap">
                                                   {{ $item['description'] }}
                                                   
@@ -418,7 +428,7 @@
                   </div>
 
                   
-                  <div style="z-index: 1; top:-230px; position: relative;" class="d-flex justify-content-between align-items-center mb-2 mx-3" >
+                  <div style="z-index: 1; top:-30rem; position: relative;" class="d-flex justify-content-between align-items-center mb-2 mx-3" >
                     <button class="btn btn-primary" id="scroll-left">
                       <i class="fa-solid fa-circle-chevron-left" style="color: black; font-size: 2rem;"></i> 
                     </button>
@@ -434,8 +444,7 @@
           </div><!------- END ROW ----------------------------------------------------------------------->
 
         </div> <!--------- END CONTAINER-FLUID---------------------------------------->
-
-      </section>
+  </section>
 
       <!------------------------------------------------------------------------------------------------>
 
